@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="src/output.css">
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+ <title>Weather App</title>
+</head>
+<body  class="bg-[#293251] font-poppins flex justify-center items-center md:h-screen" >
+  <main class="bg-white rounded-xl mx-auto w-11/12 md:w-4/5 lg:w-3/5 overflow-hidden my-12 md:my-0">
+   <header class="text-left py-2">
+    <h1 class="text-2xl font-bold text-center mb-2 font-roboto">Weather App</h1>
+   </header>    
+    <!-- denied access notification -->
+    <section class="hidden bg-[#f8d7da] py-2 text-center" id="access-denied">
+      <p class="text-[#721c24] text-lg font-bold"></p>
+    </section>
+    <!-- main app container  -->
+    <section class="bg-[#e0e6ee] flex flex-col space-y-10 pb-8">
+      <!-- user input section  -->
+      <section class="flex flex-col space-y-4 md:space-y-8">
+        <!-- user input -->
+        <div class=" w-full space-y-8">  
+          <div id="weatherOutput" class="  text-lg font-bold text-gray-700 text-center mt-5">
+            Enter a city name or coordinates to get the weather details.
+          </div>                   
+          <form class="space-y-6 md:space-y-0 flex flex-col md:flex-row justify-around bg-red-200 p-2">
+            <!-- Input for city -->
+            <div>
+              <label for="city" class="text-lg font-bold text-gray-700">Enter City Name:</label>
+              <input 
+                type="text" 
+                id="city" 
+                placeholder="City name"
+                class="mt-2 px-4 py-2 block w-full rounded-md border-gray-300 shadow-md focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+            </div>
+
+            <div>
+              <label for="latitude" class="block text-lg font-bold text-gray-700">Latitude:</label>
+              <input 
+                type="number" 
+                id="latitude" 
+                placeholder="e.g., 40.7128"
+                class="mt-2 px-4 py-2 block w-full rounded-md border-gray-300 shadow-md focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+            </div>
+
+            <div>
+              <label for="longitude" class="block text-lg font-bold text-gray-700">Longitude:</label>
+              <input 
+                type="number" 
+                id="longitude" 
+                placeholder="e.g., -74.0060"
+                class="mt-2 px-4 py-2  block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 placeholder:text-slate-400 sm:text-sm"
+              >
+            </div>
+          </form>   
+        </div> 
+       
+         <!-- weather display button -->
+        <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-10  mx-auto">
+          <button class="bg-blue-300 p-2 rounded-lg text-base hover:text-black text-gray-800 hover:bg-blue-400 transition duration-200 ease-in-out mx-auto" id="getWeatherByDetails">click here to see  weather info</button>
+
+          <button class="bg-purple-300 p-2 rounded-lg text-base text-gray-800 hover:text-black hover:bg-purple-400 transition duration-200 ease-in-out mx-auto" id="yourLocationButton">click to see your weather info</button>
+
+          
+        </div>       
+      </section>
+      <!-- Weather Display section  -->
+      <section class="mx-auto w-4/5 flex flex-col md:flex-row md:space-x-12 space-y-4 md:space-y-0 justify-between border pt-4 border-blue-300 rounded-md">
+        <!--weather icon  -->
+        <div class="md:relative flex flex-col items-center basis-1/5 md:h-32">
+          <h5 class="text-lg md:text-sm  text-white bg-indigo-400  text-center px-4 font-medium rounded">icon</h5>
+          <div class="md:absolute inset-0 flex items-center justify-center">
+            <img src="/icons/unknown.png" alt="" id="weather-icon" class=" text-gray-500 blur-[2px] md:w-20 w-24 md:h-20 h-24 object-cover mt-6">
+          </div>
+        </div>
+
+        <!-- Temperature Value  -->
+        <div class=" md:relative flex flex-col items-center basis-1/5 md:h-32">
+          <h5 class="text-lg md:text-sm text-white bg-indigo-400  text-center px-4 md:px-2 font-medium rounded">Temperature</h5>
+          <div class="md:absolute inset-0 flex items-center justify-center">
+            <p class="text-[3em] md:text-[2em] text-gray-600 cursor-pointer text-center mt-6" id="temp-value">-&deg<span class="text-[0.5em]">c</span></p>
+          </div>          
+        </div>
+        
+        <!-- Weather description  -->
+        <div class=" md:relative flex flex-col items-center basis-1/5 md:h-32 text-lg md:text-sm">
+          <h5 class="md:text-sm text-white bg-indigo-400  text-center font-medium rounded px-4 md:px-2">Description</h5>
+          <div class="md:absolute inset-0 flex items-center justify-center">
+            <p class="text-gray-600 text-center mt-6" id="temp-description">-</p>
+          </div>          
+        </div>
+          
+        <!-- location -->  
+        <div class="md:relative flex flex-col items-center basis-1/5 md:h-32 text-lg md:text-sm">
+          <h5 class="text-white bg-indigo-400  text-center px-2 font-medium rounded ">Location</h5>
+          <div class="md:absolute inset-0 flex items-center justify-center">
+            <p class="text-gray-600 text-center mt-6" id="location">-</p>
+          </div>          
+        </div>
+
+        <!-- humidity -->
+        <div class=" md:relative flex flex-col items-center basis-1/5 md:h-32 text-lg md:text-sm">
+          <h5 class=" text-white bg-indigo-400  text-center px-4 md:px-2 font-medium rounded ">Humidity</h5>
+          <div class="md:absolute inset-0 flex items-center justify-center">
+            <p class=" text-gray-600 text-center mt-6" id="humidity">-</p>
+          </div>          
+        </div>            
+      </section>      
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
