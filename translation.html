@@ -11,45 +11,47 @@
   <script src="https://kit.fontawesome.com/1028deec62.js" crossorigin="anonymous"></script>
   <title>Translation App</title>
  </head>
- <body class="bg-[#5372F0]"> 
-  <!-- <div class="bg-purple-300  rounded">
-   <a class="h-full w-full flex justify-center items-center text-center p-2 gap-2 animate-bounce" href="/index.html">
-    <span>Return to Homepage </span>   
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
-     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
-   </svg>  
-   </a>  
-  </div>  -->
+ <body class="bg-[#5372F0] md:body"> 
   <main class="font-poppins">
-   <div class="w-[43rem] bg-white rounded-lg p-8">
+   <!-- container  -->
+   <div class="w-11/12 md:w-[43rem] mt-16 md:mt-0 mx-auto  bg-white rounded-lg p-2 md:p-8">
+    <!-- text area and controls container  -->
     <div class="border border-[#bbb] rounded-md ">
-     <div class="flex border-b border-[#bbb]">
-      <textarea class="text-input " id="from-text" placeholder="Enter text"></textarea>
+     <!-- text-area  -->
+     <div class="flex md:flex-row flex-col border-b border-[#bbb]">
+      <textarea class="text-input" id="from-text" placeholder="Enter text"></textarea>
       <textarea class="text-input border-l border-[#bbb] rounded-none" readonly disabled id="to-text" placeholder="Translation"></textarea>
-     </div>  
-     <ul id="controls" class="list py-3 px-4">
-      <li id="" class="list">
-       <div id="icons" class="w-[38%] list border-r border-[#bbb] pr-4">
+     </div> 
+
+     <!-- controls  -->
+     <ul id="controls" class="list md:flex-row py-2 md:py-3 md:px-4">
+      <li class="list justify-center md:justify-between md:flex-row flex-col-reverse gap-2 md:gap-0">
+       <div id="icons" class="md:w-[38%] flex border-r-0 md:border-r border-[#bbb] md:pr-4  gap-8 md:gap-4">
         <i class="fas fa-volume-up icons" id="from"></i>
         <i class="fas fa-copy icons" id="from"></i>
        </div>
        <select></select>               
       </li>
-      <li class="list text-[#9f9f9f] text-base cursor-pointer" id="exchange">
+
+      <li class="list text-[#9f9f9f] text-base cursor-pointer " id="exchange">
        <i class="fas fa-exchange-alt"></i>
       </li>
-      <li id="" class="list">
+
+      <li class="list  md:flex-row flex-col gap-2">
        <select></select>
-       <div id="icons" class="w-[38%] list border-l border-[#bbb] pl-4">
+       <div id="icons" class="md:w-[38%] flex gap-8 md:gap-4 md:border-l border-l-0 border-[#bbb] md:pl-4">
         <i class="fas fa-volume-up icons" id="to"></i>
         <i class="fas fa-copy icons" id="to"></i>
        </div>            
-      </li>  
+      </li>
      </ul>  
     </div>   
-    <button class="w-full p-[14px] mt-4 bg-[#5372F0] text-white text-base rounded-md">Translate Text</button>    
+
+    <!-- button  -->
+    <button class="w-full p-2 md:p-[14px] mt-4 bg-[#5372F0] text-white text-base rounded-md">Translate Text</button> 
+
    </div>      
-  </main>      
+  </main>  
   <script src="countries.js"></script>
   <script src="app.js"></script>
  </body> 
