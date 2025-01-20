@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/output.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon two/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon two/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon two/favicon-16x16.png">
+  <link rel="manifest" href="/favicon two/site.webmanifest">
+  <script src="https://kit.fontawesome.com/1028deec62.js" crossorigin="anonymous"></script>
+  <title>Translation App</title>
+ </head>
+ <body class="bg-[#5372F0]"> 
+  <!-- <div class="bg-purple-300  rounded">
+   <a class="h-full w-full flex justify-center items-center text-center p-2 gap-2 animate-bounce" href="/index.html">
+    <span>Return to Homepage </span>   
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
+     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+   </svg>  
+   </a>  
+  </div>  -->
+  <main class="font-poppins">
+   <div class="w-[43rem] bg-white rounded-lg p-8">
+    <div class="border border-[#bbb] rounded-md ">
+     <div class="flex border-b border-[#bbb]">
+      <textarea class="text-input " id="from-text" placeholder="Enter text"></textarea>
+      <textarea class="text-input border-l border-[#bbb] rounded-none" readonly disabled id="to-text" placeholder="Translation"></textarea>
+     </div>  
+     <ul id="controls" class="list py-3 px-4">
+      <li id="" class="list">
+       <div id="icons" class="w-[38%] list border-r border-[#bbb] pr-4">
+        <i class="fas fa-volume-up icons" id="from"></i>
+        <i class="fas fa-copy icons" id="from"></i>
+       </div>
+       <select></select>               
+      </li>
+      <li class="list text-[#9f9f9f] text-base cursor-pointer" id="exchange">
+       <i class="fas fa-exchange-alt"></i>
+      </li>
+      <li id="" class="list">
+       <select></select>
+       <div id="icons" class="w-[38%] list border-l border-[#bbb] pl-4">
+        <i class="fas fa-volume-up icons" id="to"></i>
+        <i class="fas fa-copy icons" id="to"></i>
+       </div>            
+      </li>  
+     </ul>  
+    </div>   
+    <button class="w-full p-[14px] mt-4 bg-[#5372F0] text-white text-base rounded-md">Translate Text</button>    
+   </div>      
+  </main>      
+  <script src="countries.js"></script>
+  <script src="app.js"></script>
+ </body> 
+</html>
