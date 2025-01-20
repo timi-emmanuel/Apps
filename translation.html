@@ -11,44 +11,49 @@
   <script src="https://kit.fontawesome.com/1028deec62.js" crossorigin="anonymous"></script>
   <title>Translation App</title>
  </head>
- <body class="bg-[#5372F0] md:body"> 
-  <main class="font-poppins">
+ <body class="bg-[#5372F0] body"> 
+  <main class="font-poppins" role="main">
    <!-- container  -->
-   <div class="w-11/12 md:w-[43rem] mt-16 md:mt-0 mx-auto  bg-white rounded-lg p-2 md:p-8">
+   <div class="w-11/12 md:w-[43rem] mt-16 md:mt-0 mx-auto  bg-white rounded-lg p-2 md:p-8" role="region" aria-labelledby="translation-container">
+    <h1 id="translation-container" class="sr-only">Translation Container</h1>
     <!-- text area and controls container  -->
     <div class="border border-[#bbb] rounded-md ">
      <!-- text-area  -->
      <div class="flex md:flex-row flex-col border-b border-[#bbb]">
-      <textarea class="text-input" id="from-text" placeholder="Enter text"></textarea>
-      <textarea class="text-input border-l border-[#bbb] rounded-none" readonly disabled id="to-text" placeholder="Translation"></textarea>
+      <label for="from-text" class="sr-only">Enter text to translate</label>
+      <textarea class="text-input" id="from-text" placeholder="Enter text" aria-label="Enter text to translate"></textarea>
+      <label for="to-text" class="sr-only">Translated text</label>
+      <textarea class="text-input border-l border-[#bbb] rounded-none" readonly disabled id="to-text" placeholder="Translation" aria-label="Translated text"></textarea>     
      </div> 
 
      <!-- controls  -->
-     <ul id="controls" class="list md:flex-row py-2 md:py-3 md:px-4">
-      <li class="list justify-center md:justify-between md:flex-row flex-col-reverse gap-2 md:gap-0">
+     <ul id="controls" class="list md:flex-row py-2 md:py-3 md:px-4" role="list">
+      <li class="list justify-center md:justify-between md:flex-row flex-col-reverse gap-2 md:gap-0" role="listitem">
        <div id="icons" class="md:w-[38%] flex border-r-0 md:border-r border-[#bbb] md:pr-4  gap-8 md:gap-4">
-        <i class="fas fa-volume-up icons" id="from"></i>
-        <i class="fas fa-copy icons" id="from"></i>
+        <button aria-label="Play original text" class="fas fa-volume-up icons" id="from"></button>
+        <button aria-label="Copy original text" class="fas fa-copy icons" id="from"></button>
        </div>
-       <select></select>               
+       <label for="language-select-from" class="sr-only">Select language</label>
+       <select id="language-select-from" aria-label="Select language"></select>               
       </li>
 
-      <li class="list text-[#9f9f9f] text-base cursor-pointer " id="exchange">
-       <i class="fas fa-exchange-alt"></i>
+      <li class="list text-[#9f9f9f] text-base cursor-pointer " id="exchange" role="listitem">
+       <button aria-label="Exchange languages" class="fas fa-exchange-alt"></button>
       </li>
 
-      <li class="list  md:flex-row flex-col gap-2">
-       <select></select>
+      <li class="list  md:flex-row flex-col gap-2" role="listitem">
+       <label for="language-select-to" class="sr-only">Select language</label>
+       <select id="language-select-to" aria-label="Select language"></select>
        <div id="icons" class="md:w-[38%] flex gap-8 md:gap-4 md:border-l border-l-0 border-[#bbb] md:pl-4">
-        <i class="fas fa-volume-up icons" id="to"></i>
-        <i class="fas fa-copy icons" id="to"></i>
+        <button aria-label="Play translated text" class="fas fa-volume-up icons" id="to"></button>
+        <button aria-label="Copy translated text" class="fas fa-copy icons" id="to"></button>
        </div>            
       </li>
      </ul>  
     </div>   
 
     <!-- button  -->
-    <button class="w-full p-2 md:p-[14px] mt-4 bg-[#5372F0] text-white text-base rounded-md">Translate Text</button> 
+    <button class="w-full p-2 md:p-[14px] mt-4 bg-[#5372F0] text-white text-base rounded-md" aria-label="Translate text">Translate Text</button> 
 
    </div>      
   </main>  
