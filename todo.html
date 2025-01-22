@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="/src/output.css">
+ <title>Document</title>
+</head>
+<body class="body bg-purple-400">
+   <!-- text to speech  -->
+   <main class="font-poppins">
+    <!-- wrapper -->
+    <div class="w-11/12 md:w-[24rem] mt-16 md:mt-0 mx-auto  bg-white rounded-lg p-2 md:p-8 flex flex-col gap-6 justify-center" role="region" aria-labelledby="text-to-speech">
+
+     <h1 class="text-center">Text to Speech</h1>
+    
+     <form action="#" class="flex flex-col gap-4">
+      <div>
+       <textarea id="text-to-speech" placeholder="Enter text" class="text-input border-2 border-gray-300 rounded w-full"></textarea>
+      </div> 
+
+      <div class="flex flex-col">
+       <label for="selectVoice">Select Voices</label>
+       <select name="" id="selectVoice" class="border-2 rounded p-2 border-gray-300 text-sm">   
+       </select>
+      </div>     
+     </form>            
+     <button id="speak" class="p-2 rounded-md bg-purple-700 text-white hover:bg-purple-500">Speak</button>
+    </div>
+
+   </main>
+
+   <script src="app.js"></script>
+</body>
+</html>

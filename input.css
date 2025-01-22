@@ -16,7 +16,7 @@
 @apply flex items-center justify-between 
 }
 
-select{
+.select{
  @apply border-none outline-none bg-none sm:text-base md:text-base w-24
 }
 
