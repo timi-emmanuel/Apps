@@ -250,94 +250,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Todo App
   if (document.body.classList.contains('bg-purple-400')) {
-    const speakButton = document.querySelector('#speak');
-    const select = document.querySelector('#selectVoice');
-    const textInput = document.querySelector('#text-to-speech');
+    let isSpeaking = false; // Tracks if speech synthesis is active
 
+    // Select DOM elements
+    const speakButton = document.querySelector("#speak");
+    const textInput = document.querySelector("#text-to-speech");
+    const select = document.querySelector("#selectVoice");
+    const rateInput = document.querySelector("#rate");
+    const pitchInput = document.querySelector("#pitch");
+    const rateValue = document.querySelector(".rate-value");
+    const pitchValue = document.querySelector(".pitch-value");
     
-    // Populate voices
-    function populateVoices() {
+    // Update rate and pitch display as the user adjusts sliders
+    rateInput.addEventListener("input", () => {
+      rateValue.textContent = rateInput.value;
+    });
+    pitchInput.addEventListener("input", () => {
+      pitchValue.textContent = pitchInput.value;
+    });
+    
+    // Event listener for the Speak button
+    speakButton.addEventListener("click", () => {
+      const text = textInput.value.trim();
+      const selectedVoiceName = select.value;
+    
+      if (!text) {
+        const utterance = new SpeechSynthesisUtterance("Please enter text to speak.");
+        speechSynthesis.speak(utterance);
+        return;
+      }
+    
+      if (!selectedVoiceName) {
+        alert("Please select a voice.");
+        return;
+      }
+    
+      if (speechSynthesis.speaking) {
+        if (isSpeaking) {
+          // Pause speech
+          speechSynthesis.pause();
+          isSpeaking = false;
+          speakButton.innerHTML = "Resume Speaking";
+        } else {
+          // Resume speech
+          speechSynthesis.resume();
+          isSpeaking = true;
+          speakButton.innerHTML = "Pause Speaking";
+        }
+        return;
+      }
+    
+      // Start speaking
+      speakText(text, selectedVoiceName);
+    });
+    
+    // Function to speak text with the selected voice, rate, and pitch
+    function speakText(text, voiceName) {
+      const utterance = new SpeechSynthesisUtterance(text);
       const voices = speechSynthesis.getVoices();
-      select.innerHTML = ""; // Clear existing options
-      let selected = "";
-      voices.forEach(voice => {
-        const option = document.createElement('option');
+      const selectedVoice = voices.find((voice) => voice.name === voiceName);
+    
+      // Assign the selected voice
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+    
+      // Set rate and pitch
+      utterance.rate = parseFloat(rateInput.value);
+      utterance.pitch = parseFloat(pitchInput.value);
+    
+      // Reset button and state when speaking ends
+      utterance.onend = () => {
+        isSpeaking = false;
+        speakButton.innerHTML = "Speak";
+      };
+    
+      // Start speaking
+      speechSynthesis.speak(utterance);
+      isSpeaking = true;
+      speakButton.innerHTML = "Pause Speaking";
+    }
+    
+    // Populate the voices dropdown
+    speechSynthesis.onvoiceschanged = () => {
+      const voices = speechSynthesis.getVoices();
+      voices.forEach((voice) => {
+        const option = document.createElement("option");
         option.value = voice.name;
         option.textContent = `${voice.name} (${voice.lang})`;
         select.appendChild(option);
-        if(voice.name == "Google UK English Male"){
-         option.setAttribute('selected', 'selected');
+        if(voice.name === "Google UK English Male") {
+          option.selected = true;
         }
       });
-      console.log("Voices loaded:", voices);
-    }
-  
-    // Initialize voices
-    speechSynthesis.onvoiceschanged = populateVoices;
-    populateVoices();
-
-   
-    let isSpeaking = false; // Tracks if speech synthesis is active
-
-    speakButton.addEventListener('click', () => {
-        const text = textInput.value.trim();
-        const selectedVoiceName = select.value;
+    };
     
-        // If no text is entered, prompt the user and return
-        if (!text) {
-            const utterance = new SpeechSynthesisUtterance("Please enter text to speak.");
-            speechSynthesis.speak(utterance);
-            return;
-        }
-    
-        // If no voice is selected, alert the user and return
-        if (!selectedVoiceName) {
-            alert("Please select a voice.");
-            return;
-        }
-    
-        // Handle pausing and resuming speech
-        if (speechSynthesis.speaking) {
-            if (isSpeaking) {
-                // Pause speech
-                speechSynthesis.pause();
-                isSpeaking = false;
-                speakButton.innerHTML = "Resume Speaking";
-            } else {
-                // Resume speech
-                speechSynthesis.resume();
-                isSpeaking = true;
-                speakButton.innerHTML = "Pause Speaking";
-            }
-            return;
-        }
-    
-        // Start speaking for the first time
-        speakText(text, selectedVoiceName);
-    });
-    
-    // Function to handle speaking text with a selected voice
-    function speakText(text, voiceName) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        const voices = speechSynthesis.getVoices();
-        const selectedVoice = voices.find(voice => voice.name === voiceName);
-    
-        // Assign the selected voice if found
-        if (selectedVoice) {
-            utterance.voice = selectedVoice;
-        }
-    
-        // Reset button and state when speaking ends
-        utterance.onend = () => {
-            isSpeaking = false;
-            speakButton.innerHTML = "Speak";
-        };
-    
-        // Start speaking
-        speechSynthesis.speak(utterance);
-        isSpeaking = true;
-        speakButton.innerHTML = "Pause Speaking";
-      }   
   }
   
 })
