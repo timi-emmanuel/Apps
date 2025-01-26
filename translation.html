@@ -11,8 +11,8 @@
   <script src="https://kit.fontawesome.com/1028deec62.js" crossorigin="anonymous"></script>
   <title>Translation App</title>
  </head>
- <body class="bg-[#5372F0] md:body">   
-  <main class="font-poppins body" role="main">
+ <body class="bg-[#5372F0] body"> 
+  <main class="font-poppins" role="main">
    <!-- container  -->
    <div class="w-11/12 md:w-[43rem] mt-16 md:mt-0 mx-auto  bg-white rounded-lg p-2 md:p-8" role="region" aria-labelledby="translation-container">
     <h1 id="translation-container" class="sr-only">Translation Container</h1>
@@ -34,7 +34,7 @@
         <button aria-label="Copy original text" class="fas fa-copy icons" id="from"></button>
        </div>
        <label for="language-select-from" class="sr-only">Select language</label>
-       <select class="select" id="language-select-from" aria-label="Select language"></select>               
+       <select id="language-select-from" aria-label="Select language"></select>               
       </li>
 
       <li class="list text-[#9f9f9f] text-base cursor-pointer " id="exchange" role="listitem">
@@ -43,7 +43,7 @@
 
       <li class="list  md:flex-row flex-col gap-2" role="listitem">
        <label for="language-select-to" class="sr-only">Select language</label>
-       <select id="language-select-to" aria-label="Select language" class="select"></select>
+       <select id="language-select-to" aria-label="Select language"></select>
        <div id="icons" class="md:w-[38%] flex gap-8 md:gap-4 md:border-l border-l-0 border-[#bbb] md:pl-4">
         <button aria-label="Play translated text" class="fas fa-volume-up icons" id="to"></button>
         <button aria-label="Copy translated text" class="fas fa-copy icons" id="to"></button>
@@ -57,9 +57,6 @@
 
    </div>      
   </main>  
-
- 
-
   <script src="countries.js"></script>
   <script src="app.js"></script>
  </body> 

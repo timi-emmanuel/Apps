@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/output.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon 3/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon 3/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon 3/favicon-16x16.png">
+  <link rel="manifest" href="/favicon 3/site.webmanifest">
+  <title>Note taker</title>
+</head>
+<body class="bg-gray-200">
+  <!-- Vowel Counter -->
+   <main class="hidden">
+    <div class="flex justify-center mt-4 font-roboto">
+     <div class="bg-[#ccc] p-4 rounded-md w-[90%] md:w-2/5">
+     <h1 class="text-center font-bold mb-4">Vowel and Consonant Counter</h1>
+     <form class="flex flex-col gap-4">
+       <div class="flex flex-col gap-1">
+         <label for="word">Enter a word or sentence:</label>
+         <input type="text" id="word" placeholder="Enter a word or sentence"  class="p-2 outline-none rounded-sm">
+       </div>      
+     </form>
+ 
+     <div class="flex flex-col md:gap-2 md:flex-row" id="vowelBtns">
+       <button class="bg-red-400 w-full rounded p-1 mt-6" id="countVowel">Count Vowels</button>
+       <button class="bg-red-400 w-full rounded p-1 mt-6" id="countConsonant">Count consonants</button>  
+     </div>
+   
+     </div>    
+    </div>
+   </main>
+   
+   <!-- Note Taker -->
+    <div class="flex justify-center mt-8 md:mt-4 font-roboto relative">
+      <div class="bg-white shadow-md w-[90%] md:w-3/5 rounded-md p-6 animate-slideIn">
+        <h2 class="text-xl text-center">Note Taker</h2>
+        <p class="text-green-700 bg-gray-300 rounded p-1 w-48 mx-auto text-center ">Add a New Note</p>
+         <div class="mt-4">
+          <label for="text">Note:</label>
+          <textarea 
+          name="" 
+          id="text" 
+          class="w-full bg-gray-200 outline-none rounded-md h-48 resize-none text-lg px-4 py-2 placeholder-gray-400 placeholder-italic placeholder-opacity-70 animate-fadeIn" 
+          placeholder="write your note here" ></textarea>
+
+          <button class="bg-green-500 hover:outline-1 mx-auto p-3 mt-2 rounded-md  text-white text-base md:text-xs" id="addNote" >Add Note</button>
+         </div>
+
+         <!-- notes section -->
+          <div class="mt-4  text-sm" id="parent-note">
+             <p id="default-message" class="text-lg md:text-sm text-gray-900 bg-red-400 text-center md:w-1/5 rounded animate-bounce">no notes added yet!</p>     
+             
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-2" id="note-section">
+
+             </div>
+          </div>            
+          <!-- pop-up div  -->
+          <div id="modal" class="hidden fixed inset-0 backdrop-blur-sm  bg-black bg-opacity-50 justify-center items-center ">
+            <div class="bg-white w-[70%] p-6 rounded shadow-lg " >
+              <div class="flex justify-end mb-3">
+                <button onclick="closeModal()" class="p-2 bg-slate-100  text-gray-800 border border-gray-100 hover:border-gray-300 hover:shadow-md rounded-xl text-[0.7rem] ">
+                  ESC
+                </button>
+              </div>
+              <p class="mb-4 p-1 font-poppins text-left md:text-justify" id="modal-paragraph"></p>              
+            </div>
+          </div>
+          
+      </div>
+    </div>
+
+   <script src="sandbox.js"></script>
+</body>
+</html>
+
